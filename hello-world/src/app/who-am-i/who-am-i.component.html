@@ -1,0 +1,6 @@
+<p>Bonjour, je m'appelle {{firstname ?? 'Non comuniqué'}} {{lastname | uppercase}} </p>
+
+<button 
+type="button" 
+[disabled]="isShowNameDisabled"
+(click) = "!isShowNameDisabled && onClickChangeName()">Changer son nom !</button>
