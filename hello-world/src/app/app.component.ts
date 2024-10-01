@@ -10,11 +10,12 @@ import { WhoAmIComponent } from "./who-am-i/who-am-i.component";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  lastname1 = "Le Goat"
-  firstname1 = "Bastien"
-  lastname2 = "Le Chad"
-  fisrtname2 = "Bastien"
-  tab = [
+  currentSelectedIndex: number = 0;
+  isAsc: boolean = true;
+  lastname1 = "Le Goat";
+  firstname1 = "Bastien";
+
+  user = [
     {
       firstname: "Bastien",
       lastname: "l'objet"
@@ -22,6 +23,38 @@ export class AppComponent {
     {
       firstname: "Maxence",
       lastname: "Emery"
+    },
+    {
+      firstname: "Thomas",
+      lastname: "Chevalier"
     }
-  ]
+  ];
+
+  onChangeUserClicked(action: string) {
+    if( action === 'next' && this.currentSelectedIndex < this.user.length - 1){
+      this.currentSelectedIndex++
+      console.log(this.currentSelectedIndex)
+    }
+    if(action === "prev" && this.currentSelectedIndex > 0){
+      this.currentSelectedIndex--
+      console.log(this.currentSelectedIndex)
+    }
+    if(action === 'auto'){
+      if(this.currentSelectedIndex < this.user.length - 1 && this.isAsc === true){
+        this.currentSelectedIndex++
+      }
+  
+      if(this.currentSelectedIndex > 0 && this.isAsc === false){
+        this.currentSelectedIndex--
+      }
+  
+      if(this.currentSelectedIndex === this.user.length-1){
+        this.isAsc = false;
+      }
+  
+      if(this.currentSelectedIndex === 0){
+        this.isAsc = true;
+      }
+    }
+  }
 }

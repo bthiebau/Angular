@@ -1,6 +1,14 @@
 <p>Bonjour, je m'appelle {{firstname ?? 'Non comuniqué'}} {{lastname | uppercase}} </p>
 
+<button
+type = "button"
+(click) = "onClickChangeUser('prev')">Utilisateur précédant</button>
+
 <button 
 type="button" 
-[disabled]="isShowNameDisabled"
-(click) = "!isShowNameDisabled && onClickChangeName()">Changer son nom !</button>
+(click) = "onClickChangeUser('next')">Utilisateur suivant</button>
+
+<button
+type = "button"
+(click) = "onClickChangeUser('auto')"
+>tout en 1</button>
