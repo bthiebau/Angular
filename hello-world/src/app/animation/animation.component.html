@@ -1,0 +1,33 @@
+<div class="container mt-5">
+
+    <div class="text-center">
+      <h3 *ngIf="!isSquareReady">
+        Initialisation en cours...
+      </h3>
+      <span *ngIf="isSquareReady">
+        <button
+          (click)="move('left')"
+          class="btn btn-outline-dark">
+          Déplacer à gauche
+        </button>
+        <button
+          (click)="move('top')"
+          class="btn btn-outline-dark">
+          Déplacer en haut
+        </button>
+        <button
+          (click)="move('bottom')"
+          class="btn btn-outline-dark">
+          Déplacer en bas
+        </button>
+        <button
+          (click)="move('right')"
+          class="btn btn-outline-dark">
+          Déplacer à droite
+        </button>
+      </span>
+    </div>
+  
+    <div [ngStyle]="squareStyles"></div>
+  
+  </div>

@@ -1,0 +1,26 @@
+<thead>
+    <th>ID</th>
+    <th>Marque</th>
+    <th>Modèle</th>
+    <th>Action</th>
+</thead>
+<tbody>
+    <tr app-table 
+    [id] = "data[0].id"
+    [brand]="data[0].brand"
+    [model]="data[0].model"
+    (detailButtonClicked)="onDetailButtonClick()">
+    <tr>
+    <tr app-table 
+    [id] = "data[1].id"
+    [brand]="data[1].brand"
+    [model]="data[1].model"
+    (detailButtonClicked)="onDetailButtonClick()">
+    <tr>
+    <tr app-table 
+    [id] = "data[2].id"
+    [brand]="data[2].brand"
+    [model]="data[2].model"
+    (detailButtonClicked)="onDetailButtonClick()">
+    <tr>
+</tbody>

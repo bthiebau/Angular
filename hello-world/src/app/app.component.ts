@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { WhoAmIComponent } from "./who-am-i/who-am-i.component";
+import { AnimationComponent } from "./animation/animation.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, WhoAmIComponent],
+  imports: [RouterOutlet, WhoAmIComponent, AnimationComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -57,4 +58,6 @@ export class AppComponent {
       }
     }
   }
+
+  
 }
