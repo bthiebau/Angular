@@ -1,0 +1,18 @@
+<table>
+    <thead>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Username</th>
+    </thead>
+    <tbody>
+        <tr app-table-row 
+            [id]="content[0].id" [email]="content[0].email" [username]="content[0].username">
+        </tr>
+        <tr app-table-row
+            [id]="content[1].id" [email]="content[1].email" [username]="content[1].username">
+        </tr>
+        <tr app-table-row
+            [id]="content[2].id" [email]="content[2].email" [username]="content[2].username">
+        </tr>
+    </tbody>
+</table>
