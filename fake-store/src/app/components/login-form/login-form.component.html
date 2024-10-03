@@ -1,13 +1,13 @@
 <div class="w-full max-w-xs">
     <form [formGroup]="form" (ngSubmit)="onSubmitForm()" class="bg-white shadow-md border border-emerald-500 rounded px-8 pt-6 pb-8 mb-4">
       <div class="mb-4">
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
           Pseudo
         </label>
         <input
-         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Pseudo"
-         formControlName="username"
-         [class.border-red-500]="this.form.get('username').invalid && (this.form.get('username').dirty || this.form.get('username').touched)"
+         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Pseudo"
+         formControlName="email"
+         [class.border-red-500]="this.form.get('email').invalid && (this.form.get('email').dirty || this.form.get('email').touched)"
          >
       </div>
       <div class="mb-6">
@@ -32,4 +32,4 @@
         </button>
       </div>
     </form>
-  </div>
+</div>
