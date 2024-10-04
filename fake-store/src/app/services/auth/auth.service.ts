@@ -7,11 +7,15 @@ import { lastValueFrom } from 'rxjs';
 })
 export class AuthService {
 
-  private token: string | null
+  private _token: string | null
   private readonly http = inject(HttpClient)
 
+  get token(): string | undefined {
+    return this._token
+  }
+
   get isAuthenticated(): boolean {
-    return !!this.token
+    return !!this._token
   }
 
   async login(email: string, password: string): Promise<void> {
@@ -21,6 +25,10 @@ export class AuthService {
     })
 
     const response = await lastValueFrom(request);
-    this.token = response.access_token;
+    this._token = response.access_token;
+  }
+
+  logout(): void {
+    this._token = undefined
   }
 }
