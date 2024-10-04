@@ -1,28 +1,32 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private token: string | undefined
+  private _token: string | undefined
+  private readonly http = inject(HttpClient)
+
+  get token (): string | undefined{
+    return this._token
+  }
 
   get isAuthenticated(): boolean {
     return !!this.token
   }
-  login(username: string, password: string): Promise<void> {
-    return new Promise((res, rej) => {
-      setTimeout(() => {
-        if (username === 'admin' && password === 'P@ssw0rd') {
-          this.token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNTE2MjM5MDIyfQ.4v6'
-          res()
-        } else {
-          rej('Les identifiants sont incorrects.')
-        }
-      }, 200)
+  async login(username: string, password: string): Promise<void> {
+    const request = this.http.post<{access_token: string}>('https://api.escuelajs.co/api/v1/auth/login', {
+      email: username,
+      password: password
     })
+
+    const response = await lastValueFrom(request);
+    this._token = response.access_token;
   }
 
   logout(): void {
-    this.token = undefined
+    this._token = undefined
   }
 }
