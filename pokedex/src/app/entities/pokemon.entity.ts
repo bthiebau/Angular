@@ -1,4 +1,4 @@
-export interface PokemonHttp {
+export interface PokemonHttp { //On type ce que l'on recoit ddepuis l'API
     pokedex_id: number,
     generation: number,
     category: string,
@@ -73,7 +73,7 @@ export interface PokemonHttp {
         }[] | null
 }
   
-export interface Pokemon {
+export interface Pokemon { //Ici on garde que les champs que l'on veut
     pokedexId: number,
     generation: number,
     category: string,
@@ -96,7 +96,7 @@ export interface Pokemon {
 }
   
 export namespace Pokemon {
-export function fromHttp(pokemonHttp: PokemonHttp): Pokemon {
+export function fromHttp(pokemonHttp: PokemonHttp): Pokemon { //Ici c'est la fonction Mapper qui permet de mapper ce qu'on veut 
     return {
     pokedexId: pokemonHttp.pokedex_id,
     generation: pokemonHttp.generation,

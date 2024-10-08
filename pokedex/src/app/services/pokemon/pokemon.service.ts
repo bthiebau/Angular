@@ -14,7 +14,13 @@ export class PokemonService {
   async list(): Promise<Pokemon[]> {
   
     const req = this.http.get<PokemonHttp[]>('https://tyradex.vercel.app/api/v1/pokemon')
-    const pokemonHttop = await lastValueFrom(req) //fetch() + json()
-    return pokemonHttop.map(pHttp => Pokemon.fromHttp(pHttp))
+    const pokemonHttp = await lastValueFrom(req) //fetch() + json()
+    return pokemonHttp.map(pHttp => Pokemon.fromHttp(pHttp))
+  }
+
+  async getByPokedexId(pokedexId: number): Promise<Pokemon> {
+    const request = this.http.get<PokemonHttp>(`https://tyradex.vercel.app/api/v1/pokemon/${pokedexId}`)
+    const pokemonHttp = await lastValueFrom(request)
+    return Pokemon.fromHttp(pokemonHttp)
   }
 }
