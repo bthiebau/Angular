@@ -1,0 +1,11 @@
+<div class="container">
+    <h1 class="text-3xl font-bold underline text-center mt-4">
+      DOM PARTIE 1
+    </h1>
+    <h4 class="text-m text-center">(EXERCICE 5)</h4>
+  
+    <div class="flex justify-center items-center gap-20 mt-20">
+      <app-table [cars]="cars" (selected)="onClickChangeSelectedCar($event)" (deleteSelected)="onClickDeteleSelectedCar($event)"></app-table>
+      <app-card *ngIf="selectedCar" [selectedCar]="selectedCar"></app-card>
+    </div>
+  </div>
