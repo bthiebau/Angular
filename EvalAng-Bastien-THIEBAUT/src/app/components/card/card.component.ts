@@ -1,6 +1,7 @@
 import { NgOptimizedImage } from '@angular/common'
 import { Component, Input } from '@angular/core'
-import { Car } from '../../pages/home/home.component'
+import { Car } from '../../entities/car.entity'
+
 
 
 @Component({

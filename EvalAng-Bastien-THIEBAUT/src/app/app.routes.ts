@@ -4,6 +4,6 @@ import { AddFormPageComponent } from './pages/add-form-page/add-form-page.compon
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'nouvelleVoiture', component: AddFormPageComponent },
+    { path: 'nouvelle-voiture', component: AddFormPageComponent },
     { path: '**', redirectTo: ''}
 ];

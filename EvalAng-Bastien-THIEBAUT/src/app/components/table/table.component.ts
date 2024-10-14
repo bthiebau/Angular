@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core'
-import { Car } from '../../pages/home/home.component'
 import { NgForOf } from '@angular/common'
+import { Car } from '../../entities/car.entity'
 
 
 

@@ -3,9 +3,24 @@
       DOM PARTIE 1
     </h1>
     <h4 class="text-m text-center">(EXERCICE 5)</h4>
-  
+
+    <div>
+      <input 
+      type="text" 
+      placeholder="Rechercher par marque ou modèle..." 
+      class="border border-gray-300 rounded px-4 py-2 w-full"
+      [(ngModel)]="searchTerm" 
+      (input)="applyFilter()"
+      />
+      <button 
+      class="bg-gray-600 text-white font-bold py-2 px-4 rounded hover:bg-gray-700"
+      (click)="onClickAddCar()"
+      >Ajouter
+      </button>
+    </div>
+
     <div class="flex justify-center items-center gap-20 mt-20">
-      <app-table [cars]="cars" (selected)="onClickChangeSelectedCar($event)" (deleteSelected)="onClickDeteleSelectedCar($event)"></app-table>
+      <app-table [cars]="filteredCars" (selected)="onClickChangeSelectedCar($event)" (deleteSelected)="onClickDeteleSelectedCar($event)"></app-table>
       <app-card *ngIf="selectedCar" [selectedCar]="selectedCar"></app-card>
     </div>
   </div>
