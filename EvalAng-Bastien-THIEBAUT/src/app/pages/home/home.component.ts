@@ -1,10 +1,10 @@
 import { CommonModule, NgIf } from '@angular/common'
-import { Component, inject } from '@angular/core'
+import { Component, inject, OnInit } from '@angular/core'
 import { CardComponent } from '../../components/card/card.component'
 import { TableComponent } from '../../components/table/table.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { Car } from '../../entities/car.entity'
 import { Router } from '@angular/router'
+import { Car, CarService } from '../../services/car/car.service'
 
 
 @Component({
@@ -14,17 +14,21 @@ import { Router } from '@angular/router'
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
-  private readonly router =inject(Router)
+export class HomeComponent implements OnInit{
+  private readonly router = inject(Router)
+  private readonly carService = inject(CarService)
 
-  cars: Car[] = [
-    { id: 1, brand: 'BMW', model: 'X5', picture: 'bmw-x5.jpg' },
-    { id: 2, brand: 'Audi', model: 'Q5', picture: 'audi-q5.jpg' },
-    { id: 3, brand: 'Mercedes', model: 'GLE', picture: 'mercedes-gle.jpg' }
-  ]
+  cars: Car[] = []
   selectedCar: Car;
   searchTerm: string = '';
-  filteredCars: Car[] = [...this.cars];
+  filteredCars: Car[]
+
+  ngOnInit(): void {
+    this.carService.cars$.subscribe((cars) => {
+      this.cars = cars;
+      this.filteredCars = cars;
+    });
+  }
 
 
   applyFilter(): void {
